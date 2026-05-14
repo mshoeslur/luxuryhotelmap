@@ -170,13 +170,13 @@ body.dark .pop-tag{background:#252525;border-color:#333;color:#777}
       <div class="fsection">
         <div class="fsection-hd open" onclick="toggleF(this)">Brand <span class="arr">▼</span></div>
         <div class="fsection-body open">
-          <div class="frow"><input type="checkbox" id="b-bo" value="Boutique" onchange="applyFilters()"><label for="b-bo">Boutique</label></div>
+          <div class="frow"><input type="checkbox" id="b-bo" value="Boutique" checked onchange="applyFilters()"><label for="b-bo">Boutique</label></div>
           <div class="frow"><input type="checkbox" id="b-fs" value="Four Seasons" checked onchange="applyFilters()"><label for="b-fs">Four Seasons</label></div>
-          <div class="frow"><input type="checkbox" id="b-hy" value="Hyatt" onchange="applyFilters()"><label for="b-hy">Hyatt</label></div>
-          <div class="frow"><input type="checkbox" id="b-hi" value="Hilton" onchange="applyFilters()"><label for="b-hi">Hilton</label></div>
-          <div class="frow"><input type="checkbox" id="b-ig" value="IHG" onchange="applyFilters()"><label for="b-ig">IHG</label></div>
-          <div class="frow"><input type="checkbox" id="b-ma" value="Marriott" onchange="applyFilters()"><label for="b-ma">Marriott</label></div>
-          <div class="frow"><input type="checkbox" id="b-ac" value="Accor" onchange="applyFilters()"><label for="b-ac">Accor</label></div>
+          <div class="frow"><input type="checkbox" id="b-hy" value="Hyatt" checked onchange="applyFilters()"><label for="b-hy">Hyatt</label></div>
+          <div class="frow"><input type="checkbox" id="b-hi" value="Hilton" checked onchange="applyFilters()"><label for="b-hi">Hilton</label></div>
+          <div class="frow"><input type="checkbox" id="b-ig" value="IHG" checked onchange="applyFilters()"><label for="b-ig">IHG</label></div>
+          <div class="frow"><input type="checkbox" id="b-ma" value="Marriott" checked onchange="applyFilters()"><label for="b-ma">Marriott</label></div>
+          <div class="frow"><input type="checkbox" id="b-ac" value="Accor" checked onchange="applyFilters()"><label for="b-ac">Accor</label></div>
         </div>
       </div>
 
@@ -1603,7 +1603,8 @@ function toggleF(hd){
 }
 
 function resetFilters(){
-  document.querySelectorAll('#filters input[type=checkbox]').forEach(c=>c.checked=c.id==='b-fs');
+  document.querySelectorAll('#filters input[type=checkbox][id^="b-"]').forEach(c=>c.checked=true);
+  document.querySelectorAll('#filters input[type=checkbox]:not([id^="b-"])').forEach(c=>c.checked=false);
   document.querySelectorAll('.rchip').forEach(c=>c.classList.toggle('on',c.dataset.r==='all'));
   activeRegion='all';searchQ='';document.getElementById('si').value='';
   applyFilters();
